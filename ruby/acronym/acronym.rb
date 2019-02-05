@@ -1,8 +1,7 @@
 class Acronym
   def self.abbreviate(phrase)
     phrase
-      .scan(/\b\w+\b/)
-      .collect { |word| word[0] }
+      .scan(/\b[A-Za-z]/)
       .join
       .upcase
   end
