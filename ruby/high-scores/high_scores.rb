@@ -1,35 +1,37 @@
 class HighScores
+  attr_reader :scores
+
   def initialize(scores)
     @scores =  scores
   end
 
-  def scores
-    @scores
-  end
-
   def latest
-    @scores[-1]
+    scores.last
   end
 
   def personal_best
-    @scores.max
+    scores.max
   end
 
   def personal_top
-    @scores.sort.reverse[0..2]
+    scores.max(3)
   end
 
   def report
-    report_latest + report_comparison
+    report_latest + " " + report_comparison
   end
 
+  private
+
   def report_latest
-    "Your latest score was #{latest}. "
+    "Your latest score was #{latest}."
   end
 
   def report_comparison
-    latest == personal_best ?
-      "That's your personal best!" :
+    if latest == personal_best
+      "That's your personal best!"
+    else
       "That's #{personal_best - latest} short of your personal best!"
+    end
   end
 end
