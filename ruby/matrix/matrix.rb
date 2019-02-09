@@ -2,7 +2,7 @@ class Matrix
   attr_reader :rows
 
   def initialize(input)
-    @rows = input.lines.map { |row| parse(row) }
+    @rows = parse(input)
   end
 
   def columns
@@ -11,7 +11,7 @@ class Matrix
 
   private
 
-  def parse(row)
-    row.split.map(&:to_i)
+  def parse(input)
+    input.lines.map { |row| row.split.map(&:to_i) }
   end
 end
