@@ -1,19 +1,19 @@
 class Phrase
-  attr_reader :words
+  attr_reader :phrase
 
   def initialize(phrase)
-    @words = extract_words(phrase)
+    @phrase = phrase
   end
 
   def word_count
-    count = Hash.new
-    words.uniq.map { |word| count[word] = words.count(word) }
+    count = Hash.new(0)
+    words.map { |word| count[word] += 1 }
     count
   end
 
   private
 
-  def extract_words(phrase)
+  def words
     phrase.downcase.gsub(/\s'|'\s/, ' ').scan(/[\w']+/)
   end
 end
