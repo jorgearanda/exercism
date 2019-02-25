@@ -7,13 +7,12 @@ class Phrase
 
   def word_count
     count = Hash.new(0)
-    words.map { |word| count[word] += 1 }
-    count
+    words.each_with_object(count) { |word| count[word] += 1 }
   end
 
   private
 
   def words
-    phrase.downcase.gsub(/\s'|'\s/, ' ').scan(/[\w']+/)
+    phrase.downcase.scan(/\b[\w']+\b/)
   end
 end
