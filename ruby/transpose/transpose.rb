@@ -18,7 +18,7 @@ class Transpose
   end
 
   def self.split_row(row, width)
-    row.ljust(width).split(//)
+    row.ljust(width).chars
   end
 
   def self.row_size(input)
