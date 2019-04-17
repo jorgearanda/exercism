@@ -1,3 +1,3 @@
 two_fer <- function(input="you") {
-  sprintf("One for %s, one for me.", input)
+  paste0("One for ", input, ", one for me.")
 }
